@@ -1,0 +1,3 @@
+[submodule "local_O_information_general"]
+	path = local_O_information_general
+	url = https://github.com/danielemarinazzo/local_O_information_general.git
