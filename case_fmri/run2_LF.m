@@ -17,13 +17,14 @@ rsn = categorical(rsn);
 %% params 
 
 n_hf = 20; % number of LF considered
+factors_to_discard = 1:3; % choose factors to discard
 
 %% computing synergies 
 
 OO = cell(length(dgr),1);
 for idg = 1:length(dgr)
     
-    disp(['Grupo... ' num2str(dgr(idg))]);
+    disp(['Group... ' num2str(dgr(idg))]);
 
     load(['data' num2str(nreg) '_gr' num2str(dgr(idg)) '.mat']);
 
@@ -34,8 +35,8 @@ for idg = 1:length(dgr)
     Fn = zscore(F); % 
 
     % compute OI  
-    F = Fn(:,4:n_hf); % removing first components
-    oo = syn_factors_oinfo(F,X);
+    Fn(:,factors_to_discard)=[];
+    oo = syn_factors_oinfo(Fn,X);
 
     OO{idg} = oo;   
 end
